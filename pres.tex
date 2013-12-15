@@ -114,17 +114,88 @@ Mittal and Yi Liu}
 
 \begin{frame}
   \frametitle{Baseline}
+
+  \begin{block}{Mesure tfidf}
+    La requête est lancée et les résultats retournés sont calculés
+    avec une mesure tfidf classique.
+  \end{block}
+  \pause
+
+  \begin{block}{Local expansion}
+    Correspond à une extension de requête locale classique :
+
+    \begin{itemize}
+    \item La requête est lancée une première fois
+    \item Les termes les plus importants (tfidf) des premiers
+      documents retournés sont ajoutés à la requête
+    \item La requête est relancée avec les termes originaux et les
+      nouveaux termes
+    \end{itemize}
+  \end{block}
   % description de la baseline
   % description du S_2@n
 \end{frame}
 
 \begin{frame}
+  \frametitle{Les détails du tfidf utilisés}
+
+  \begin{block}{Vecteur de poids}
+    \begin{figure}[h]
+      \centering
+      $<0.0, 1.0, 0.0, 0.0, 0.5, 0.5, 0.2, 0.3>$
+    \end{figure}
+    
+    
+    Les poids du vecteurs correspondent à :
+
+    \begin{enumerate}
+    \item Le texte de tout le document
+    \item Le texte de la question
+    \item Le texte de la réponse
+    \item Le texte du titre
+    \item Chacun des textes ci-dessus, sans les stopwords
+    \end{enumerate}
+
+    Le but du second poids est de prendre en compte les termes
+    interrogatifs (when, where, which, ...)
+
+  \end{block}
+  \pause
+  \begin{block}{La mesure utilisée}
+    Comparaison des vecteurs via la mesure Cosine
+  \end{block}
+
+\end{frame}
+
+\begin{frame}
   \frametitle{Résultats}
   % le tableau
+  \begin{figure}[h]
+    \centering
+    \begin{tabular}[h]{|c|c|c|c|c|}
+    \hline
+    & $S_2@10$ & $S_2@20$ & $S_{1,2}@10$ & $S_{1,2}@20$\\
+    \hline
+    baseline tfidf & 27 & 35 & 58 & 65\\
+    local expansion & 30 (+11.1) & 40 (+14.2) & 57 (-1) & 63 (-3)\\
+    SMT-based expansion & 38 (+40.7) & 43 (+22.8) & 58 & 65\\
+    \hline
+  \end{tabular}
+
+    \caption{Résultats}
+    \label{fig:res}
+  \end{figure}
+
 \end{frame}
 
 \begin{frame}
   \frametitle{Explication des résultats}
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{table4}
+    \label{fig:res}
+  \end{figure}
   % tableau 4 de l'article
 \end{frame}
 
