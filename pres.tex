@@ -1,0 +1,48 @@
+\documentclass[10pt]{beamer}
+
+\usetheme{Warsaw}
+\beamertemplatenavigationsymbolsempty
+
+\usepackage[utf8x]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{multicol}
+\usetikzlibrary{automata,positioning}
+\graphicspath{{./img/}}
+\DeclareGraphicsExtensions{.png, .jpeg, .jpg}
+
+
+\renewcommand*\thesection{\arabic{section}}
+
+
+\AtBeginSection[]{%
+  \begin{frame}<beamer>
+    \frametitle{Plan}
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=hide/show/hide]
+  \end{frame}
+  \addtocounter{framenumber}{-1}
+}
+
+\setbeamertemplate{footline}[frame number]
+
+
+\title{Statistical Machine Translation for Query Expansion in Answer
+  Retrieval\\ 
+\small
+Stefan Riezler, Alexander Vasserman, Ioannis Tsochantaridis, Vibhu
+Mittal and Yi Liu}
+
+\author{Rémi Bois, Agathe Mollé}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+
+\end{frame}
+
+\end{document}
