@@ -91,22 +91,62 @@ Mittal and Yi Liu}
 \begin{frame}
   \frametitle{Paraphraser pour améliorer la précision}
   % présenter l'intuition et un exemple
+  \begin{block}{Améliorer la précision}
+  La requête seule peut ne pas suffire à trouver la réponse adéquate.
+  
+  Il est donc judicieux de l'étendre à l'aide de reformulations du même problème.
+  
+  $\implies$ Utilité des paraphrases
+  \end{block}
 \end{frame}
 
 \begin{frame}
   \frametitle{Comment paraphraser ?}
   % double traduction
+  \begin{block}{Approche utilisée}
+  \begin{itemize}
+    \item Utilisation d'une langue pivot pour identifier des paraphrases/synonymes
+    \item Double traduction d'expressions, groupes de mots
+    \item Passage par autant de langues pivots que possible, puis sélection des meilleurs résultats
+    \item Expansion de requête en ajoutant les termes introduits par les n-meilleures paraphrases de la requête
+  \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}
   \frametitle{Sélection des paraphrases}
   %formule
+  \begin{block}{Sélection des n-meilleures paraphrases}
+  La probabilité de paraphrase d'une phrase complète est obtenue en faisant un produit, pour tous les constituants (groupes de mots) de la phrase des :
+  \begin{itemize}
+    \item fréquences relatives des constituants dans les tables bilingues
+    \item fréquences relatives des mots dans les tables bilingues
+    \item nombre de constituants
+    \item nombre de mots
+    \item score de \textit{reordering}
+    \item score associé à un modèle de langue 6-gramme
+  \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}
   \frametitle{La traduction automatique pour améliorer les résultats
     ?}
   % traduction question -> réponse + exemple
+  \begin{block}{Autre utilisation de la traduction automatique}
+  On considère les questions et les réponses comme deux langages distincts $\implies$ corpus parallèle
+  
+  La traduction d'une question en réponse va permettre d'apprendre les associations entre certains mots de la questions et leurs synonymes dans la réponse.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exemple}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{table2}
+    \label{fig:res}
+  \end{figure}
 \end{frame}
 
 \section{Corpus et données d'entraînement}
@@ -115,12 +155,25 @@ Mittal and Yi Liu}
 \begin{frame}
   \frametitle{L'entraînement du module de paraphrase}
   % russe truc
+  \begin{block}{Données d'entra\^inement}
+    Traductions manuelles Chinois$\rightarrow$Anglais (NIST 2006)
+    
+    $\implies$ Une table de paraphrases comprenant 33 millions de paires de paraphrases en anglais, extraite à partir d'un milliard de paires de constituants.
+  \end{block}
 \end{frame}
 
 \begin{frame}
   \frametitle{Le corpus composé de FAQ}
   % présentation du corpus, stats etc...
-  
+  \begin{block}{Corpus}
+  \begin{itemize}
+    \item 4 milliards de pages web crawlées
+    \item 2.6 millions de pages extraites avec les requ\^etes \og \verb?inurl:faq? \fg{} et \og \verb?inurl:faqs? \fg{} 
+  	\item étiquetage manuel de 1000 pages pour entraîner un classifieur obtenant 90\% de score F1 $\implies$ 795 486 pages considérées comme FAQ
+  	\item Extraction des questions/réponses brutale pour avoir la meilleure précision possible (ponctuation, tags HTML, marqueurs (ex: Q:, (1)) et ancres lexicales) $\implies$ 10 millions de paires question/réponse
+  	\item Evaluation manuelle sur 100 documents atteignant une précision de 98\%.
+  \end{itemize}
+  \end{block}
 \end{frame}
 
 
@@ -250,7 +303,7 @@ Mittal and Yi Liu}
   Il semble que beaucoup de termes retrouvés par la méthode de
   paraphrase et de traduction correspondent en fait à des variations
   du même terme (eg. allergens, allergy, allergies, ...). Un stemming
-  aurait permit de lever ces ambiguïtés sans avoir à recourir à ce système.
+  aurait permis de lever ces ambiguïtés sans avoir à recourir à ce système.
   % stemming ? taille du corpus de test ?
 \end{frame}
 
