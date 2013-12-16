@@ -17,6 +17,13 @@
 
 \renewcommand*\thesection{\arabic{section}}
 
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
 
 \AtBeginSection[]{%
   \begin{frame}<beamer>
@@ -30,7 +37,7 @@
 
 
 \title{Statistical Machine Translation for Query Expansion in Answer
-  Retrieval\\ 
+  Retrieval\cite{Riezler07}\\ 
 \small
 Stefan Riezler, Alexander Vasserman, Ioannis Tsochantaridis, Vibhu
 Mittal and Yi Liu}
@@ -52,10 +59,6 @@ Mittal and Yi Liu}
 \begin{frame}
   \tableofcontents
 \end{frame}
-
-\section{Introduction}
-\label{sec:intro}
-
 
 \section{Question Answering}
 \label{sec:QA}
@@ -89,7 +92,7 @@ Mittal and Yi Liu}
 \label{sec:paratrans}
 
 \begin{frame}
-  \frametitle{Paraphraser pour améliorer la précision}
+  \frametitle{Reformulation de la question}
   % présenter l'intuition et un exemple
   \begin{block}{Améliorer la précision}
   La requête seule peut ne pas suffire à trouver la réponse adéquate.
@@ -97,6 +100,14 @@ Mittal and Yi Liu}
   Il est donc judicieux de l'étendre à l'aide de reformulations du même problème.
   
   $\implies$ Utilité des paraphrases
+  \end{block}
+  \pause
+
+  \begin{block}{Technique utilisée en QA}
+    La reformulation, par variations syntaxiques (Hermjakob
+    \cite{Hermjakob02} ou Lin \cite{Lin01}), ou par remplacement de
+    termes via des ontologies (Burke \cite{Burke97}), ont déjà été
+    explorées pour la tâche de Question Answering.
   \end{block}
 \end{frame}
 
@@ -300,12 +311,27 @@ Mittal and Yi Liu}
 
 \begin{frame}
   \frametitle{Quelques limites}
+
+  \begin{block}{Stemming}
   Il semble que beaucoup de termes retrouvés par la méthode de
   paraphrase et de traduction correspondent en fait à des variations
   du même terme (eg. allergens, allergy, allergies, ...). Un stemming
   aurait permis de lever ces ambiguïtés sans avoir à recourir à ce système.
+  \end{block}
+  \begin{block}{Taille de l'évaluation}
+    L'évaluation donne une idée de la précision, mais pas du rappel.
+    
+    On ne connaît pas le nombre de discussions nécessaires entre les
+    juges pour trouver un accord.
+  \end{block}
   % stemming ? taille du corpus de test ?
 \end{frame}
 
+
+\begin{frame}[allowbreaks]
+  \frametitle{Références}
+  \bibliographystyle{amsalpha}
+  \bibliography{pres.bib}
+\end{frame}
 
 \end{document}
