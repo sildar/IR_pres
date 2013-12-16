@@ -152,7 +152,7 @@ Mittal and Yi Liu}
   \begin{itemize}
     \item Utilisation d'une langue pivot pour identifier des paraphrases/synonymes
     \item Double traduction d'expressions, groupes de mots
-    \item Passage par autant de langues pivots que possible, puis sélection des meilleurs résultats
+    \item Si plusieurs traductions mènent à la même paraphrase, on ne garde que la meilleure
     \item Expansion de requête en ajoutant les termes introduits par les n-meilleures paraphrases de la requête
   \end{itemize}
   \end{block}
@@ -171,6 +171,7 @@ Mittal and Yi Liu}
     \item score de \textit{reordering}
     \item score associé à un modèle de langue 6-gramme
   \end{itemize}
+  Entra\^inement du MER (\textit{Minimum Error Rate}) avec une mesure BLEU pour estimer les poids des traits.
   \end{block}
 \end{frame}
 
