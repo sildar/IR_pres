@@ -183,6 +183,14 @@ Mittal and Yi Liu}
   
   La traduction d'une question en réponse va permettre d'apprendre les associations entre certains mots de la questions et leurs synonymes dans la réponse.
   \end{block}
+  \pause
+
+  \begin{block}{Une approche héritée du QA}
+    La traduction de questions en réponses a été explorée pour le
+    Question Answering (Berger \cite{Berger00} ou Soricut et Brill
+    \cite{Soricut06}).
+  \end{block}
+
 \end{frame}
 
 \begin{frame}
@@ -292,7 +300,8 @@ Mittal and Yi Liu}
     \end{enumerate}
 
     Le but du second poids est de prendre en compte les termes
-    interrogatifs (when, where, which, ...)
+    interrogatifs (when, where, which, ...). Modèle repris de Jijkoun
+    \cite{Jijkoun05}.
 
   \end{block}
   \pause
@@ -341,11 +350,13 @@ Mittal and Yi Liu}
 \begin{frame}
   \frametitle{Une méthode efficace}
   % approche nouvelle (?)
+  \begin{block}{Apports}
   \begin{itemize}
-    \item Une approche nouvelle
+    \item Une approche issue du Question Answering et adaptée à la RI.
     \item Les 2 techniques à base de SMT améliorent les baselines (tfidf et expansion locale de requ\^ete)
     \item Application limitée (FAQ) mais portable à de la Recherche d'Information plus générale
   \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}
